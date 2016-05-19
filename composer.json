@@ -1,8 +1,6 @@
 {
-    "name": "laravel/laravel",
-    "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
-    "license": "MIT",
+    "name":"laravel-adminlte",
+    "description":"Scraffold de laravel com admin-lte",
     "type": "project",
     "require": {
         "php": ">=5.5.9",
