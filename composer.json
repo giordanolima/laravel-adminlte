@@ -1,5 +1,5 @@
 {
-    "name":"laravel-adminlte",
+    "name":"giordanolima/laravel-adminlte",
     "description":"Scraffold de laravel com admin-lte",
     "type": "project",
     "require": {
