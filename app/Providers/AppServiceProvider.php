@@ -1,0 +1,31 @@
+<?php
+
+namespace App\Providers;
+
+use Illuminate\Support\ServiceProvider;
+
+class AppServiceProvider extends ServiceProvider
+{
+    /**
+     * Bootstrap any application services.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        \Carbon\Carbon::setToStringFormat('d/m/Y');
+        view()->composer('admin.templates.principal', function ($view) {
+            $view->with('usuario', auth()->user());
+        });
+    }
+
+    /**
+     * Register any application services.
+     *
+     * @return void
+     */
+    public function register()
+    {
+        //
+    }
+}

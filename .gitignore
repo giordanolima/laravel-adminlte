@@ -1,0 +1,6 @@
+/vendor
+/node_modules
+/resources/assets/adjusted/
+/resources/assets/merged/
+/public/build/
+.env
