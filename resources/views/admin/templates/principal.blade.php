@@ -60,7 +60,7 @@
             </div>
 
             <footer class="main-footer">
-                <strong>Copyright &copy; {{ date("Y") }} - Desenvolvido por <a href="http://giordanolima.com.br" target="_blank">giordanolima.com.br</a>.</strong> Todos os direitos reservados.
+                <strong>Copyright &copy; {{ date("Y") }}</strong> - Desenvolvido por <strong><a href="http://giordanolima.com.br" target="_blank">giordanolima.com.br</a></strong>. Todos os direitos reservados.
             </footer>
         </div>
         <script src="{{ elixir('admin/all.js') }}"></script>
