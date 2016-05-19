@@ -1,0 +1,17 @@
+{
+    "author":"Giordano Lima",
+    "name":"laravel-adminlte",
+    "description":"Scraffold de laravel com admin-lte",
+    "version":"1.0",
+    "repository":{
+        "type":"git",
+        "url":"https://bitbucket.org/giordanolima/laravel-adminlte.git"
+    },
+    "dependencies":{},
+    "contributors":   [
+        {
+            "name": "Giordano Lima",
+            "email":"giordanol@gmail.com"
+        }
+    ]
+}
