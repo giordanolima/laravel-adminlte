@@ -2,5 +2,5 @@
 
 Para utilizar:
 ```php
-composer create-project giordanolima/laravel-adminlte nome-do-projeto --repository-url=http://repo.yourcomposerrepo.com
+composer create-project giordanolima/laravel-adminlte nome-do-projeto --repository-url=https://bitbucket.org/giordanolima/laravel-adminlte.git
 ```
