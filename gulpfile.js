@@ -56,7 +56,8 @@ gulp.task('scripts:all', function() {
         "resources/assets/plugins/bootbox/bootbox.min.js",
         "resources/assets/plugins/dropzone/dropzone.js",
         "resources/assets/plugins/imgareaselect/jquery.imgareaselect.min.js",
-        "resources/assets/plugins/Sortable/Sortable.js",
+        "resources/assets/plugins/jquery-ui/jquery-ui.min.js",
+        "resources/assets/plugins/loader/loader.js",
         "resources/assets/bower_components/AdminLTE/dist/js/app.js",
         "resources/assets/admin/app.js"
     ];

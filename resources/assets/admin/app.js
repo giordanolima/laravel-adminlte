@@ -96,8 +96,44 @@ $(document).ready(function () {
     });
 
     $(".sortable").each(function(){
-        Sortable.create($(this).get()[0],{ 
-            handle: '.badge'
+        $(this).sortable({
+            placeholder: "sort-highlight",
+            handle: ".handle",
+            cancel: '',
+            forcePlaceholderSize: true,
+            zIndex: 999999,
+            cursor: "move",
+            update: function (a, b) {
+                var $elemento = b.item;
+
+                var $elementoAnterior = $elemento.prev();
+                var $elementoProximo = $elemento.next();
+                var $id = $elemento.data('id');
+                var $vizinho_id;
+                var $tipo;
+                if ($elementoAnterior.length > 0) {
+                    $tipo = 'moverApos';
+                    $vizinho_id = $elementoAnterior.data('id');
+                } else if ($elementoProximo.length > 0) {
+                    $tipo = 'moverAntes';
+                    $vizinho_id = $elementoProximo.data('id');
+                }
+                $.ajax({
+                    url: $rotaSortable,
+                    type: 'POST',
+                    data: {
+                        tipo: $tipo,
+                        id: $id,
+                        vizinho_id: $vizinho_id
+                    },
+                    beforeSend: function(){
+                        waitingDialog.show();
+                    },
+                    complete: function () {
+                        waitingDialog.hide();
+                    }
+                });
+            }
         });
     });
 
