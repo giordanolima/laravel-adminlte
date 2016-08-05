@@ -4,7 +4,9 @@
         "method" => "GET"
     ]) 
 !!}
-
+@foreach(request()->except(["busca","page", "_token"]) as $chave => $valor)
+<input type="hidden" name="{{ $chave }}" value="{{ $valor }}" />
+@endforeach
 <div class="input-group input-group-sm">
     {!! 
         Form::text('busca', request("busca"), [
