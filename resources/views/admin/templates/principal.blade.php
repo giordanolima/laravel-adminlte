@@ -20,7 +20,7 @@
             <header class="main-header">
                 <a href="{{ url("admin::home") }}" class="logo">
                     <span class="logo-mini"><b>LA</b></span>
-                    <span class="logo-lg">Laravel - AdminLTE</span>
+                    <span class="logo-lg">{{ config("app.name") }}</span>
                 </a>
                 <nav class="navbar navbar-static-top" role="navigation">
                     <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
@@ -63,6 +63,9 @@
                 <strong>Copyright &copy; {{ date("Y") }}</strong> - Desenvolvido por <strong><a href="http://giordanolima.com.br" target="_blank">giordanolima.com.br</a></strong>. Todos os direitos reservados.
             </footer>
         </div>
+        @yield("js")
+        <script src="{{ asset('assets/admin/js/ckeditor/ckeditor.js') }}"></script>
         <script src="{{ elixir('admin/all.js') }}"></script>
+        @yield("scripts")
     </body>
 </html>
