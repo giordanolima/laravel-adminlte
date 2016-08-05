@@ -9,7 +9,7 @@ use App\Repositories\Usuarios\UsuariosRepository;
 class UsuariosController extends BaseController {
     
     protected $repository;
-    protected $titulo = "Contatos";
+    protected $titulo = "Usuários";
     protected $route = "admin::usuarios";
     protected $request = DadosPessoaisRequest::class;
     protected $excluirMetodos = ["getVer"];

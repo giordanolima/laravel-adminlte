@@ -6,7 +6,7 @@
     <ol class="breadcrumb">
         <li><a href="{{ route("admin::home") }}"><i class="icon ion-ios-home"></i> Home</a></li>
         <li><a href="{{ route("admin::usuarios") }}">Usuários</a></li>
-        <li class="active">Cadastrar Cliente</li>
+        <li class="active">Cadastrar Usuários</li>
     </ol>
 </section>
 <section class="content">
@@ -16,7 +16,7 @@
             @include("admin.templates.mensagens")
             <div class="box box-primary">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Cadastrar dados</h3>
+                    <h3 class="box-title">Cadastrar Usuário</h3>
                 </div>
                 {!! 
                     Form::model($obj,[
