@@ -26,7 +26,6 @@
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th class="text-center">#</th>
                         <th>Nome</th>
                         <th class="text-center">E-mail</th>
                         <th class="text-center col-lg-2">Açoes</th>
@@ -35,7 +34,6 @@
                 <tbody>
                     @forelse($lista as $usuario)
                     <tr>
-                        <td class="text-center">{{ $usuario->usuario_id }}</td>
                         <td>{{ $usuario->usuario_nome }}</td>
                         <td class="text-center">{{ $usuario->usuario_email }}</td>
                         <td class="text-center">
