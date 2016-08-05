@@ -27,9 +27,10 @@
 .crop-parent{
     position: relative;
     width: 100%;
+    text-align: center;
 }
 .crop-parent > img{
-    width: 100%;
+    max-width: 100%;
 }
 .cursor-pointer{ cursor: pointer !important;}
 .login-logo img{
@@ -37,4 +38,16 @@
 }
 .nowrap {
     white-space: nowrap;
+}
+td{
+    vertical-align: middle;
+}
+.icon-rotate{
+    -webkit-transition: -webkit-transform 0.5s ease-in-out;
+    -moz-transition: -moz-transform 0.5s ease-in-out;
+    -o-transition: -o-transform 0.5s ease-in-out;
+    transition: transform 0.5s ease-in-out;
+}
+.mce-widget.mce-tooltip {
+    display: none !important;
 }

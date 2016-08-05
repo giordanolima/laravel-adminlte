@@ -136,7 +136,22 @@ $(document).ready(function () {
             }
         });
     });
-
+    $(document).on("click", ".ver-thumbs", function(){
+        var url = $(this).data("url");
+        $.getJSON(url, function(data){
+            var obj = $("#thumbnails").find("table tbody");
+            obj.find("tr").remove();
+            for (var i = 0; i < data.length; i++) {
+                var tr = "<tr>";
+                tr += "<td><img src='" + data[i].imagem_url + "' height='80'/></td>";
+                tr += "<td class='text-center'>" + data[i].imagem_largura + "px X " + data[i].imagem_altura + "px</td>";
+                tr += "<td class='text-right'><a class='btn btn-primary' href='" + url_recortar_imagem(data[i].imagem_id) + "'>Recortar Novamente</a></td>";
+                tr += "</tr>";
+                obj.append(tr);
+            }
+            $("#thumbnails").modal("show");
+        });
+    });
 });
 
 $(window).load(function () {
@@ -186,10 +201,36 @@ $(window).load(function () {
         format: 'dd/mm/yyyy',
         language: 'pt-BR'
     });
+    $(".timepicker").timepicker({
+        minuteStep: 1,
+        showMeridian: false,
+        defaultTime: false
+    });
+    if ($('.select2').length > 0) {
+        $('.select2').select2();
+    }
+    if ($('.select2-sem-busca').length > 0) {
+        $('.select2-sem-busca').select2({minimumResultsForSearch: Infinity});
+    }
     
     // ICHECK
     $('input[type="checkbox"].icheck, input[type="radio"].icheck').iCheck({
         checkboxClass: 'icheckbox_flat-blue',
         radioClass: 'iradio_flat-blue'
     });
+    
+    if($(".editor").length > 0 && typeof CKEDITOR != "undefined"){
+        $(".editor").each(function(){
+            CKEDITOR.replace( $(this).attr("id"), {
+                filebrowserBrowseUrl: "/fileman/index.html",
+                filebrowserImageBrowseUrl: '/fileman/index.html?type=image',
+                removeDialogTabs: 'link:upload;image:upload'
+            });
+        });
+    }
 });
+function nl2br (str, isXhtml) {
+  var breakTag = (isXhtml || typeof isXhtml === 'undefined') ? '<br ' + '/>' : '<br>';
+  return (str + '')
+    .replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1' + breakTag + '$2')
+}

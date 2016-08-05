@@ -21,18 +21,27 @@ gulp.task("css-adjust:adminlte-plugin-icheck",function(){
         }))
         .pipe(gulp.dest('resources/assets/adjusted'));    
 });
-gulp.task("css-adjust",["css-adjust:adminlte-plugin-icheck"]);
+gulp.task("css-adjust:imgareaselect-animated",function(){
+    return gulp.src('resources/assets/plugins/imgareaselect/imgareaselect-animated.css')
+        .pipe(urlAdjuster({
+             replace: [ "../", ""]
+        }))
+        .pipe(gulp.dest('resources/assets/adjusted'));    
+});
+gulp.task("css-adjust",["css-adjust:adminlte-plugin-icheck","css-adjust:imgareaselect-animated"]);
 
 // Concatenando CSS
-gulp.task("styles",["css-adjust"],function(){
+gulp.task("styles:admin",["css-adjust"],function(){
     var src = [
         "resources/assets/bower_components/AdminLTE/bootstrap/css/bootstrap.css",
-        "resources/assets/bower_components/AdminLTE/dist/css/AdminLTE.css",
         "resources/assets/bower_components/AdminLTE/dist/css/skins/skin-blue.css",
         "resources/assets/bower_components/AdminLTE/plugins/datepicker/datepicker3.css",
+        "resources/assets/bower_components/AdminLTE/plugins/timepicker/bootstrap-timepicker.min.css",
+        "resources/assets/bower_components/AdminLTE/plugins/select2/select2.min.css",
+        "resources/assets/bower_components/AdminLTE/dist/css/AdminLTE.css",
         "resources/assets/adjusted/blue.css",
+        "resources/assets/adjusted/imgareaselect-animated.css",
         "resources/assets/plugins/dropzone/dropzone.css",
-        "resources/assets/plugins/imgareaselect/imgareaselect-animated.css",
         "resources/assets/admin/app.css"
     ];
     return gulp.src(src)
@@ -40,9 +49,9 @@ gulp.task("styles",["css-adjust"],function(){
         .pipe(gulpif(isProduction,csso()))
         .pipe(gulp.dest('resources/assets/merged/admin'));
 });
-
+gulp.task('styles',["styles:admin"]);
 // Concatenando JS
-gulp.task('scripts:all', function() {
+gulp.task('scripts:admin', function() {
     var src = [
         "resources/assets/bower_components/AdminLTE/plugins/jQuery/jQuery-2.2.0.min.js",
         "resources/assets/bower_components/AdminLTE/bootstrap/js/bootstrap.min.js",
@@ -50,14 +59,18 @@ gulp.task('scripts:all', function() {
         "resources/assets/bower_components/AdminLTE/plugins/iCheck/icheck.min.js",
         "resources/assets/bower_components/AdminLTE/plugins/datepicker/bootstrap-datepicker.js",
         "resources/assets/bower_components/AdminLTE/plugins/datepicker/locales/bootstrap-datepicker.pt-BR.js",
+        "resources/assets/bower_components/AdminLTE/plugins/timepicker/bootstrap-timepicker.js",
         "resources/assets/bower_components/AdminLTE/plugins/input-mask/jquery.inputmask.js",
         "resources/assets/bower_components/AdminLTE/plugins/input-mask/jquery.inputmask.extensions.js",
         "resources/assets/bower_components/AdminLTE/plugins/input-mask/jquery.inputmask.date.extensions.js",
+        "resources/assets/bower_components/AdminLTE/plugins/select2/select2.full.js",
+        "resources/assets/bower_components/AdminLTE/plugins/chartjs/Chart.js",
         "resources/assets/plugins/bootbox/bootbox.min.js",
         "resources/assets/plugins/dropzone/dropzone.js",
         "resources/assets/plugins/imgareaselect/jquery.imgareaselect.min.js",
         "resources/assets/plugins/jquery-ui/jquery-ui.min.js",
         "resources/assets/plugins/loader/loader.js",
+        "resources/assets/plugins/moment/moment.min.js",
         "resources/assets/bower_components/AdminLTE/dist/js/app.js",
         "resources/assets/admin/app.js"
     ];
@@ -77,7 +90,7 @@ gulp.task('scripts:login', function() {
         .pipe(gulpif(isProduction,uglify()))
         .pipe(gulp.dest('resources/assets/merged/admin'));
 });
-gulp.task('scripts',["scripts:all","scripts:login"]);
+gulp.task('scripts',["scripts:admin","scripts:login"]);
 
 gulp.task('images', function () {
     copy('resources/assets/bower_components/AdminLTE/bootstrap/fonts/*', 'public/build/fonts',function(){});
