@@ -152,6 +152,13 @@ $(document).ready(function () {
             $("#thumbnails").modal("show");
         });
     });
+    $(document).on("click", ".adicionar-imagem", function (e) {
+        var parent = $(this).closest(".imagens-parent");
+        var appendImg = parent.children(".imagens-append");
+        var clone = appendImg.children(".form-group").last().clone();
+        appendImg.append(clone);
+        appendImg.children(".form-group").last().find("[type=file]").val("");
+    });
 });
 
 $(window).load(function () {
