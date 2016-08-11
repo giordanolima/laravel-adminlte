@@ -39,7 +39,7 @@ abstract class BaseController extends Controller {
 
     public function postCadastrar(AdminRequest $request) {
         if (!in_array("getCadastrar", $this->excluirMetodos)) {
-            $obj = $this->repository->updateOrCreate([$this->repository->getKeyName() => $request->get($this->repository->getKeyName())], $request->except([$this->repository->getKeyName(), '_token']));
+            $obj = $this->repository->updateOrCreate([$this->repository->getKeyName() => $request->get($this->repository->getKeyName())], array_filter($request->except([$this->repository->getKeyName(), '_token'])));
             if (method_exists($this->repository, "afterCadastrar"))
                 $this->repository->afterCadastrar($obj);
             return redirect()->route($this->route)->with(['ok' => 'Dados atualizados com sucesso.']);
